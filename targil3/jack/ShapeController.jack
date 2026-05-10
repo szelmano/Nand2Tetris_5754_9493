@@ -91,7 +91,7 @@ class ShapeController {
         let location = 650;
         let actionCount = 0;
         let rotation = 0;
-        let sizeMode = 0;   // מתחילים במקורי החדש = medium
+        let sizeMode = 0;    
         let chosen = false;
         let done = false;
 
