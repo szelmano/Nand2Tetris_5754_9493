@@ -1,0 +1,445 @@
+class Umbrella {
+
+    function void draw(int location) {
+        do Umbrella.drawByState(location, 0, 0);
+        return;
+    }
+
+    function void clear(int location) {
+        do Umbrella.clearByState(location, 0, 0);
+        return;
+    }
+
+    function void drawSmallRow(int memAddress, int rowOffset, int value) {
+        do Memory.poke(memAddress + rowOffset, value);
+        return;
+    }
+
+    function void drawMediumRow(int memAddress, int rowOffset, int word1, int word2) {
+        do Memory.poke(memAddress + rowOffset, word1);
+        do Memory.poke(memAddress + rowOffset + 1, word2);
+        do Memory.poke(memAddress + rowOffset + 32, word1);
+        do Memory.poke(memAddress + rowOffset + 33, word2);
+        return;
+    }
+
+    function void drawHugeRow(int memAddress, int rowOffset, int word1, int word2, int word3) {
+        do Memory.poke(memAddress + rowOffset, word1);
+        do Memory.poke(memAddress + rowOffset + 1, word2);
+        do Memory.poke(memAddress + rowOffset + 2, word3);
+
+        do Memory.poke(memAddress + rowOffset + 32, word1);
+        do Memory.poke(memAddress + rowOffset + 33, word2);
+        do Memory.poke(memAddress + rowOffset + 34, word3);
+
+        do Memory.poke(memAddress + rowOffset + 64, word1);
+        do Memory.poke(memAddress + rowOffset + 65, word2);
+        do Memory.poke(memAddress + rowOffset + 66, word3);
+        return;
+    }
+
+    function void clearSmallArea(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 0);
+        do Memory.poke(memAddress + 64, 0);
+        do Memory.poke(memAddress + 96, 0);
+        do Memory.poke(memAddress + 128, 0);
+        do Memory.poke(memAddress + 160, 0);
+        do Memory.poke(memAddress + 192, 0);
+        do Memory.poke(memAddress + 224, 0);
+        do Memory.poke(memAddress + 256, 0);
+        do Memory.poke(memAddress + 288, 0);
+        do Memory.poke(memAddress + 320, 0);
+        do Memory.poke(memAddress + 352, 0);
+        do Memory.poke(memAddress + 384, 0);
+        do Memory.poke(memAddress + 416, 0);
+        do Memory.poke(memAddress + 448, 0);
+        do Memory.poke(memAddress + 480, 0);
+        return;
+    }
+
+    function void clearMediumRow(int memAddress, int rowOffset) {
+        do Memory.poke(memAddress + rowOffset, 0);
+        do Memory.poke(memAddress + rowOffset + 1, 0);
+        do Memory.poke(memAddress + rowOffset + 32, 0);
+        do Memory.poke(memAddress + rowOffset + 33, 0);
+        return;
+    }
+
+    function void clearMediumArea(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.clearMediumRow(memAddress, 0);
+        do Umbrella.clearMediumRow(memAddress, 64);
+        do Umbrella.clearMediumRow(memAddress, 128);
+        do Umbrella.clearMediumRow(memAddress, 192);
+        do Umbrella.clearMediumRow(memAddress, 256);
+        do Umbrella.clearMediumRow(memAddress, 320);
+        do Umbrella.clearMediumRow(memAddress, 384);
+        do Umbrella.clearMediumRow(memAddress, 448);
+        do Umbrella.clearMediumRow(memAddress, 512);
+        do Umbrella.clearMediumRow(memAddress, 576);
+        do Umbrella.clearMediumRow(memAddress, 640);
+        do Umbrella.clearMediumRow(memAddress, 704);
+        do Umbrella.clearMediumRow(memAddress, 768);
+        do Umbrella.clearMediumRow(memAddress, 832);
+        do Umbrella.clearMediumRow(memAddress, 896);
+        do Umbrella.clearMediumRow(memAddress, 960);
+        return;
+    }
+
+    function void clearHugeRow(int memAddress, int rowOffset) {
+        do Memory.poke(memAddress + rowOffset, 0);
+        do Memory.poke(memAddress + rowOffset + 1, 0);
+        do Memory.poke(memAddress + rowOffset + 2, 0);
+
+        do Memory.poke(memAddress + rowOffset + 32, 0);
+        do Memory.poke(memAddress + rowOffset + 33, 0);
+        do Memory.poke(memAddress + rowOffset + 34, 0);
+
+        do Memory.poke(memAddress + rowOffset + 64, 0);
+        do Memory.poke(memAddress + rowOffset + 65, 0);
+        do Memory.poke(memAddress + rowOffset + 66, 0);
+        return;
+    }
+
+    function void clearHugeArea(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.clearHugeRow(memAddress, 0);
+        do Umbrella.clearHugeRow(memAddress, 96);
+        do Umbrella.clearHugeRow(memAddress, 192);
+        do Umbrella.clearHugeRow(memAddress, 288);
+        do Umbrella.clearHugeRow(memAddress, 384);
+        do Umbrella.clearHugeRow(memAddress, 480);
+        do Umbrella.clearHugeRow(memAddress, 576);
+        do Umbrella.clearHugeRow(memAddress, 672);
+        do Umbrella.clearHugeRow(memAddress, 768);
+        do Umbrella.clearHugeRow(memAddress, 864);
+        do Umbrella.clearHugeRow(memAddress, 960);
+        do Umbrella.clearHugeRow(memAddress, 1056);
+        do Umbrella.clearHugeRow(memAddress, 1152);
+        do Umbrella.clearHugeRow(memAddress, 1248);
+        do Umbrella.clearHugeRow(memAddress, 1344);
+        do Umbrella.clearHugeRow(memAddress, 1440);
+        return;
+    }
+
+    function void clearByState(int location, int rotation, int sizeMode) {
+        if (sizeMode = 2) {
+            do Umbrella.clearSmallArea(location);
+        }
+        if (sizeMode = 0) {
+            do Umbrella.clearMediumArea(location);
+        }
+        if (sizeMode = 1) {
+            do Umbrella.clearHugeArea(location);
+        }
+        return;
+    }
+
+    function void drawByState(int location, int rotation, int sizeMode) {
+        if (sizeMode = 2) {
+            if (rotation = 0) { do Umbrella.drawSmall0(location); }
+            if (rotation = 90) { do Umbrella.drawSmall90(location); }
+            if (rotation = 180) { do Umbrella.drawSmall180(location); }
+            if (rotation = 270) { do Umbrella.drawSmall270(location); }
+        }
+
+        if (sizeMode = 0) {
+            if (rotation = 0) { do Umbrella.drawMedium0(location); }
+            if (rotation = 90) { do Umbrella.drawMedium90(location); }
+            if (rotation = 180) { do Umbrella.drawMedium180(location); }
+            if (rotation = 270) { do Umbrella.drawMedium270(location); }
+        }
+
+        if (sizeMode = 1) {
+            if (rotation = 0) { do Umbrella.drawHuge0(location); }
+            if (rotation = 90) { do Umbrella.drawHuge90(location); }
+            if (rotation = 180) { do Umbrella.drawHuge180(location); }
+            if (rotation = 270) { do Umbrella.drawHuge270(location); }
+        }
+        return;
+    }
+
+    function void drawSmall0(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawSmallRow(memAddress, 0, 0);
+        do Umbrella.drawSmallRow(memAddress, 32, 768);
+        do Umbrella.drawSmallRow(memAddress, 64, 1920);
+        do Umbrella.drawSmallRow(memAddress, 96, 4032);
+        do Umbrella.drawSmallRow(memAddress, 128, 4064);
+        do Umbrella.drawSmallRow(memAddress, 160, 16368);
+        do Umbrella.drawSmallRow(memAddress, 192, 32760);
+        do Umbrella.drawSmallRow(memAddress, 224, -4);
+        do Umbrella.drawSmallRow(memAddress, 256, -4);
+        do Umbrella.drawSmallRow(memAddress, 288, 768);
+        do Umbrella.drawSmallRow(memAddress, 320, 768);
+        do Umbrella.drawSmallRow(memAddress, 352, 768);
+        do Umbrella.drawSmallRow(memAddress, 384, 768);
+        do Umbrella.drawSmallRow(memAddress, 416, 864);
+        do Umbrella.drawSmallRow(memAddress, 448, 992);
+        do Umbrella.drawSmallRow(memAddress, 480, 992);
+        return;
+    }
+
+    function void drawSmall90(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawSmallRow(memAddress, 0, 0);
+        do Umbrella.drawSmallRow(memAddress, 32, 0);
+        do Umbrella.drawSmallRow(memAddress, 64, 384);
+        do Umbrella.drawSmallRow(memAddress, 96, 896);
+        do Umbrella.drawSmallRow(memAddress, 128, 1920);
+        do Umbrella.drawSmallRow(memAddress, 160, 3975);
+        do Umbrella.drawSmallRow(memAddress, 192, 8071);
+        do Umbrella.drawSmallRow(memAddress, 224, 16259);
+        do Umbrella.drawSmallRow(memAddress, 256, 32767);
+        do Umbrella.drawSmallRow(memAddress, 288, 32767);
+        do Umbrella.drawSmallRow(memAddress, 320, 16256);
+        do Umbrella.drawSmallRow(memAddress, 352, 8064);
+        do Umbrella.drawSmallRow(memAddress, 384, 1920);
+        do Umbrella.drawSmallRow(memAddress, 416, 1920);
+        do Umbrella.drawSmallRow(memAddress, 448, 896);
+        do Umbrella.drawSmallRow(memAddress, 480, 384);
+        return;
+    }
+
+    function void drawSmall180(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawSmallRow(memAddress, 0, 1984);
+        do Umbrella.drawSmallRow(memAddress, 32, 1984);
+        do Umbrella.drawSmallRow(memAddress, 64, 1728);
+        do Umbrella.drawSmallRow(memAddress, 96, 192);
+        do Umbrella.drawSmallRow(memAddress, 128, 192);
+        do Umbrella.drawSmallRow(memAddress, 160, 192);
+        do Umbrella.drawSmallRow(memAddress, 192, 192);
+        do Umbrella.drawSmallRow(memAddress, 224, 16383);
+        do Umbrella.drawSmallRow(memAddress, 256, 16383);
+        do Umbrella.drawSmallRow(memAddress, 288, 8190);
+        do Umbrella.drawSmallRow(memAddress, 320, 4092);
+        do Umbrella.drawSmallRow(memAddress, 352, 2032);
+        do Umbrella.drawSmallRow(memAddress, 384, 1008);
+        do Umbrella.drawSmallRow(memAddress, 416, 480);
+        do Umbrella.drawSmallRow(memAddress, 448, 192);
+        do Umbrella.drawSmallRow(memAddress, 480, 0);
+        return;
+    }
+
+    function void drawSmall270(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawSmallRow(memAddress, 0, 0);
+        do Umbrella.drawSmallRow(memAddress, 32, 0);
+        do Umbrella.drawSmallRow(memAddress, 64, 384);
+        do Umbrella.drawSmallRow(memAddress, 96, 448);
+        do Umbrella.drawSmallRow(memAddress, 128, 480);
+        do Umbrella.drawSmallRow(memAddress, 160, -7696);
+        do Umbrella.drawSmallRow(memAddress, 192, -7688);
+        do Umbrella.drawSmallRow(memAddress, 224, -15876);
+        do Umbrella.drawSmallRow(memAddress, 256, -2);
+        do Umbrella.drawSmallRow(memAddress, 288, -2);
+        do Umbrella.drawSmallRow(memAddress, 320, 508);
+        do Umbrella.drawSmallRow(memAddress, 352, 504);
+        do Umbrella.drawSmallRow(memAddress, 384, 480);
+        do Umbrella.drawSmallRow(memAddress, 416, 480);
+        do Umbrella.drawSmallRow(memAddress, 448, 448);
+        do Umbrella.drawSmallRow(memAddress, 480, 384);
+        return;
+    }
+
+    function void drawMedium0(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawMediumRow(memAddress, 0, 0, 0);
+        do Umbrella.drawMediumRow(memAddress, 64, 0, 15);
+        do Umbrella.drawMediumRow(memAddress, 128, -16384, 63);
+        do Umbrella.drawMediumRow(memAddress, 192, -4096, 255);
+        do Umbrella.drawMediumRow(memAddress, 256, -1024, 255);
+        do Umbrella.drawMediumRow(memAddress, 320, -256, 4095);
+        do Umbrella.drawMediumRow(memAddress, 384, -64, 16383);
+        do Umbrella.drawMediumRow(memAddress, 448, -16, -1);
+        do Umbrella.drawMediumRow(memAddress, 512, -16, -1);
+        do Umbrella.drawMediumRow(memAddress, 576, 0, 15);
+        do Umbrella.drawMediumRow(memAddress, 640, 0, 15);
+        do Umbrella.drawMediumRow(memAddress, 704, 0, 15);
+        do Umbrella.drawMediumRow(memAddress, 768, 0, 15);
+        do Umbrella.drawMediumRow(memAddress, 832, 15360, 15);
+        do Umbrella.drawMediumRow(memAddress, 896, -1024, 15);
+        do Umbrella.drawMediumRow(memAddress, 960, -1024, 15);
+        return;
+    }
+
+    function void drawMedium90(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawMediumRow(memAddress, 0, 0, 0);
+        do Umbrella.drawMediumRow(memAddress, 64, 0, 0);
+        do Umbrella.drawMediumRow(memAddress, 128, -16384, 3);
+        do Umbrella.drawMediumRow(memAddress, 192, -16384, 15);
+        do Umbrella.drawMediumRow(memAddress, 256, -16384, 63);
+        do Umbrella.drawMediumRow(memAddress, 320, -16321, 255);
+        do Umbrella.drawMediumRow(memAddress, 384, -16321, 1023);
+        do Umbrella.drawMediumRow(memAddress, 448, -16369, 4095);
+        do Umbrella.drawMediumRow(memAddress, 512, -1, 16383);
+        do Umbrella.drawMediumRow(memAddress, 576, -1, 16383);
+        do Umbrella.drawMediumRow(memAddress, 640, -16384, 4095);
+        do Umbrella.drawMediumRow(memAddress, 704, -16384, 1023);
+        do Umbrella.drawMediumRow(memAddress, 768, -16384, 63);
+        do Umbrella.drawMediumRow(memAddress, 832, -16384, 63);
+        do Umbrella.drawMediumRow(memAddress, 896, -16384, 15);
+        do Umbrella.drawMediumRow(memAddress, 960, -16384, 3);
+        return;
+    }
+
+    function void drawMedium180(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawMediumRow(memAddress, 0, -4096, 63);
+        do Umbrella.drawMediumRow(memAddress, 64, -4096, 63);
+        do Umbrella.drawMediumRow(memAddress, 128, -4096, 60);
+        do Umbrella.drawMediumRow(memAddress, 192, -4096, 0);
+        do Umbrella.drawMediumRow(memAddress, 256, -4096, 0);
+        do Umbrella.drawMediumRow(memAddress, 320, -4096, 0);
+        do Umbrella.drawMediumRow(memAddress, 384, -4096, 0);
+        do Umbrella.drawMediumRow(memAddress, 448, -1, 4095);
+        do Umbrella.drawMediumRow(memAddress, 512, -1, 4095);
+        do Umbrella.drawMediumRow(memAddress, 576, -4, 1023);
+        do Umbrella.drawMediumRow(memAddress, 640, -16, 255);
+        do Umbrella.drawMediumRow(memAddress, 704, -256, 63);
+        do Umbrella.drawMediumRow(memAddress, 768, -256, 15);
+        do Umbrella.drawMediumRow(memAddress, 832, -1024, 3);
+        do Umbrella.drawMediumRow(memAddress, 896, -4096, 0);
+        do Umbrella.drawMediumRow(memAddress, 960, 0, 0);
+        return;
+    }
+
+    function void drawMedium270(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawMediumRow(memAddress, 0, 0, 0);
+        do Umbrella.drawMediumRow(memAddress, 64, 0, 0);
+        do Umbrella.drawMediumRow(memAddress, 128, -16384, 3);
+        do Umbrella.drawMediumRow(memAddress, 192, -4096, 3);
+        do Umbrella.drawMediumRow(memAddress, 256, -1024, 3);
+        do Umbrella.drawMediumRow(memAddress, 320, -256, -1021);
+        do Umbrella.drawMediumRow(memAddress, 384, -64, -1021);
+        do Umbrella.drawMediumRow(memAddress, 448, -16, -4093);
+        do Umbrella.drawMediumRow(memAddress, 512, -4, -1);
+        do Umbrella.drawMediumRow(memAddress, 576, -4, -1);
+        do Umbrella.drawMediumRow(memAddress, 640, -16, 3);
+        do Umbrella.drawMediumRow(memAddress, 704, -64, 3);
+        do Umbrella.drawMediumRow(memAddress, 768, -1024, 3);
+        do Umbrella.drawMediumRow(memAddress, 832, -1024, 3);
+        do Umbrella.drawMediumRow(memAddress, 896, -4096, 3);
+        do Umbrella.drawMediumRow(memAddress, 960, -16384, 3);
+        return;
+    }
+
+    function void drawHuge0(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawHugeRow(memAddress, 0, 0, 0, 0);
+        do Umbrella.drawHugeRow(memAddress, 96, 0, 16128, 0);
+        do Umbrella.drawHugeRow(memAddress, 192, 0, -32, 1);
+        do Umbrella.drawHugeRow(memAddress, 288, 0, -4, 15);
+        do Umbrella.drawHugeRow(memAddress, 384, -(32767 + 1), -1, 15);
+        do Umbrella.drawHugeRow(memAddress, 480, -4096, -1, 1023);
+        do Umbrella.drawHugeRow(memAddress, 576, -512, -1, 8191);
+        do Umbrella.drawHugeRow(memAddress, 672, -64, -1, -1);
+        do Umbrella.drawHugeRow(memAddress, 768, -64, -1, -1);
+        do Umbrella.drawHugeRow(memAddress, 864, 0, 16128, 0);
+        do Umbrella.drawHugeRow(memAddress, 960, 0, 16128, 0);
+        do Umbrella.drawHugeRow(memAddress, 1056, 0, 16128, 0);
+        do Umbrella.drawHugeRow(memAddress, 1152, 0, 16128, 0);
+        do Umbrella.drawHugeRow(memAddress, 1248, -(32767 + 1), 16159, 0);
+        do Umbrella.drawHugeRow(memAddress, 1344, -(32767 + 1), 16383, 0);
+        do Umbrella.drawHugeRow(memAddress, 1440, -(32767 + 1), 16383, 0);
+        return;
+    }
+
+    function void drawHuge90(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawHugeRow(memAddress, 0, 0, 0, 0);
+        do Umbrella.drawHugeRow(memAddress, 96, 0, 0, 0);
+        do Umbrella.drawHugeRow(memAddress, 192, 0, 2016, 0);
+        do Umbrella.drawHugeRow(memAddress, 288, 0, 16352, 0);
+        do Umbrella.drawHugeRow(memAddress, 384, 0, -32, 1);
+        do Umbrella.drawHugeRow(memAddress, 480, 511, -32, 15);
+        do Umbrella.drawHugeRow(memAddress, 576, 511, -32, 127);
+        do Umbrella.drawHugeRow(memAddress, 672, 63, -32, 1023);
+        do Umbrella.drawHugeRow(memAddress, 768, -1, -1, 8191);
+        do Umbrella.drawHugeRow(memAddress, 864, -1, -1, 8191);
+        do Umbrella.drawHugeRow(memAddress, 960, 0, -32, 1023);
+        do Umbrella.drawHugeRow(memAddress, 1056, 0, -32, 127);
+        do Umbrella.drawHugeRow(memAddress, 1152, 0, -32, 1);
+        do Umbrella.drawHugeRow(memAddress, 1248, 0, -32, 1);
+        do Umbrella.drawHugeRow(memAddress, 1344, 0, 16352, 0);
+        do Umbrella.drawHugeRow(memAddress, 1440, 0, 2016, 0);
+        return;
+    }
+
+    function void drawHuge180(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawHugeRow(memAddress, 0, 0, -4, 1);
+        do Umbrella.drawHugeRow(memAddress, 96, 0, -4, 1);
+        do Umbrella.drawHugeRow(memAddress, 192, 0, -1796, 1);
+        do Umbrella.drawHugeRow(memAddress, 288, 0, 252, 0);
+        do Umbrella.drawHugeRow(memAddress, 384, 0, 252, 0);
+        do Umbrella.drawHugeRow(memAddress, 480, 0, 252, 0);
+        do Umbrella.drawHugeRow(memAddress, 576, 0, 252, 0);
+        do Umbrella.drawHugeRow(memAddress, 672, -1, -1, 1023);
+        do Umbrella.drawHugeRow(memAddress, 768, -1, -1, 1023);
+        do Umbrella.drawHugeRow(memAddress, 864, -8, -1, 127);
+        do Umbrella.drawHugeRow(memAddress, 960, -64, -1, 15);
+        do Umbrella.drawHugeRow(memAddress, 1056, -4096, -1, 1);
+        do Umbrella.drawHugeRow(memAddress, 1152, -4096, 16383, 0);
+        do Umbrella.drawHugeRow(memAddress, 1248, -(32767 + 1), 2047, 0);
+        do Umbrella.drawHugeRow(memAddress, 1344, 0, 252, 0);
+        do Umbrella.drawHugeRow(memAddress, 1440, 0, 0, 0);
+        return;
+    }
+
+    function void drawHuge270(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Umbrella.drawHugeRow(memAddress, 0, 0, 0, 0);
+        do Umbrella.drawHugeRow(memAddress, 96, 0, 0, 0);
+        do Umbrella.drawHugeRow(memAddress, 192, 0, 2016, 0);
+        do Umbrella.drawHugeRow(memAddress, 288, 0, 2044, 0);
+        do Umbrella.drawHugeRow(memAddress, 384, -(32767 + 1), 2047, 0);
+        do Umbrella.drawHugeRow(memAddress, 480, -4096, 2047, -128);
+        do Umbrella.drawHugeRow(memAddress, 576, -512, 2047, -128);
+        do Umbrella.drawHugeRow(memAddress, 672, -64, 2047, -1024);
+        do Umbrella.drawHugeRow(memAddress, 768, -8, -1, -1);
+        do Umbrella.drawHugeRow(memAddress, 864, -8, -1, -1);
+        do Umbrella.drawHugeRow(memAddress, 960, -64, 2047, 0);
+        do Umbrella.drawHugeRow(memAddress, 1056, -512, 2047, 0);
+        do Umbrella.drawHugeRow(memAddress, 1152, -(32767 + 1), 2047, 0);
+        do Umbrella.drawHugeRow(memAddress, 1248, -(32767 + 1), 2047, 0);
+        do Umbrella.drawHugeRow(memAddress, 1344, 0, 2044, 0);
+        do Umbrella.drawHugeRow(memAddress, 1440, 0, 2016, 0);
+        return;
+    }
+}

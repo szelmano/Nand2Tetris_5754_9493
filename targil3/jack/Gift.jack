@@ -1,0 +1,445 @@
+class Gift {
+
+    function void draw(int location) {
+        do Gift.drawByState(location, 0, 0);
+        return;
+    }
+
+    function void clear(int location) {
+        do Gift.clearByState(location, 0, 0);
+        return;
+    }
+
+    function void drawSmallRow(int memAddress, int rowOffset, int value) {
+        do Memory.poke(memAddress + rowOffset, value);
+        return;
+    }
+
+    function void drawMediumRow(int memAddress, int rowOffset, int word1, int word2) {
+        do Memory.poke(memAddress + rowOffset, word1);
+        do Memory.poke(memAddress + rowOffset + 1, word2);
+        do Memory.poke(memAddress + rowOffset + 32, word1);
+        do Memory.poke(memAddress + rowOffset + 33, word2);
+        return;
+    }
+
+    function void drawHugeRow(int memAddress, int rowOffset, int word1, int word2, int word3) {
+        do Memory.poke(memAddress + rowOffset, word1);
+        do Memory.poke(memAddress + rowOffset + 1, word2);
+        do Memory.poke(memAddress + rowOffset + 2, word3);
+
+        do Memory.poke(memAddress + rowOffset + 32, word1);
+        do Memory.poke(memAddress + rowOffset + 33, word2);
+        do Memory.poke(memAddress + rowOffset + 34, word3);
+
+        do Memory.poke(memAddress + rowOffset + 64, word1);
+        do Memory.poke(memAddress + rowOffset + 65, word2);
+        do Memory.poke(memAddress + rowOffset + 66, word3);
+        return;
+    }
+
+    function void clearSmallArea(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Memory.poke(memAddress + 0, 0);
+        do Memory.poke(memAddress + 32, 0);
+        do Memory.poke(memAddress + 64, 0);
+        do Memory.poke(memAddress + 96, 0);
+        do Memory.poke(memAddress + 128, 0);
+        do Memory.poke(memAddress + 160, 0);
+        do Memory.poke(memAddress + 192, 0);
+        do Memory.poke(memAddress + 224, 0);
+        do Memory.poke(memAddress + 256, 0);
+        do Memory.poke(memAddress + 288, 0);
+        do Memory.poke(memAddress + 320, 0);
+        do Memory.poke(memAddress + 352, 0);
+        do Memory.poke(memAddress + 384, 0);
+        do Memory.poke(memAddress + 416, 0);
+        do Memory.poke(memAddress + 448, 0);
+        do Memory.poke(memAddress + 480, 0);
+        return;
+    }
+
+    function void clearMediumRow(int memAddress, int rowOffset) {
+        do Memory.poke(memAddress + rowOffset, 0);
+        do Memory.poke(memAddress + rowOffset + 1, 0);
+        do Memory.poke(memAddress + rowOffset + 32, 0);
+        do Memory.poke(memAddress + rowOffset + 33, 0);
+        return;
+    }
+
+    function void clearMediumArea(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.clearMediumRow(memAddress, 0);
+        do Gift.clearMediumRow(memAddress, 64);
+        do Gift.clearMediumRow(memAddress, 128);
+        do Gift.clearMediumRow(memAddress, 192);
+        do Gift.clearMediumRow(memAddress, 256);
+        do Gift.clearMediumRow(memAddress, 320);
+        do Gift.clearMediumRow(memAddress, 384);
+        do Gift.clearMediumRow(memAddress, 448);
+        do Gift.clearMediumRow(memAddress, 512);
+        do Gift.clearMediumRow(memAddress, 576);
+        do Gift.clearMediumRow(memAddress, 640);
+        do Gift.clearMediumRow(memAddress, 704);
+        do Gift.clearMediumRow(memAddress, 768);
+        do Gift.clearMediumRow(memAddress, 832);
+        do Gift.clearMediumRow(memAddress, 896);
+        do Gift.clearMediumRow(memAddress, 960);
+        return;
+    }
+
+    function void clearHugeRow(int memAddress, int rowOffset) {
+        do Memory.poke(memAddress + rowOffset, 0);
+        do Memory.poke(memAddress + rowOffset + 1, 0);
+        do Memory.poke(memAddress + rowOffset + 2, 0);
+
+        do Memory.poke(memAddress + rowOffset + 32, 0);
+        do Memory.poke(memAddress + rowOffset + 33, 0);
+        do Memory.poke(memAddress + rowOffset + 34, 0);
+
+        do Memory.poke(memAddress + rowOffset + 64, 0);
+        do Memory.poke(memAddress + rowOffset + 65, 0);
+        do Memory.poke(memAddress + rowOffset + 66, 0);
+        return;
+    }
+
+    function void clearHugeArea(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.clearHugeRow(memAddress, 0);
+        do Gift.clearHugeRow(memAddress, 96);
+        do Gift.clearHugeRow(memAddress, 192);
+        do Gift.clearHugeRow(memAddress, 288);
+        do Gift.clearHugeRow(memAddress, 384);
+        do Gift.clearHugeRow(memAddress, 480);
+        do Gift.clearHugeRow(memAddress, 576);
+        do Gift.clearHugeRow(memAddress, 672);
+        do Gift.clearHugeRow(memAddress, 768);
+        do Gift.clearHugeRow(memAddress, 864);
+        do Gift.clearHugeRow(memAddress, 960);
+        do Gift.clearHugeRow(memAddress, 1056);
+        do Gift.clearHugeRow(memAddress, 1152);
+        do Gift.clearHugeRow(memAddress, 1248);
+        do Gift.clearHugeRow(memAddress, 1344);
+        do Gift.clearHugeRow(memAddress, 1440);
+        return;
+    }
+
+    function void clearByState(int location, int rotation, int sizeMode) {
+        if (sizeMode = 2) {
+            do Gift.clearSmallArea(location);
+        }
+        if (sizeMode = 0) {
+            do Gift.clearMediumArea(location);
+        }
+        if (sizeMode = 1) {
+            do Gift.clearHugeArea(location);
+        }
+        return;
+    }
+
+    function void drawByState(int location, int rotation, int sizeMode) {
+        if (sizeMode = 2) {
+            if (rotation = 0) { do Gift.drawSmall0(location); }
+            if (rotation = 90) { do Gift.drawSmall90(location); }
+            if (rotation = 180) { do Gift.drawSmall180(location); }
+            if (rotation = 270) { do Gift.drawSmall270(location); }
+        }
+
+        if (sizeMode = 0) {
+            if (rotation = 0) { do Gift.drawMedium0(location); }
+            if (rotation = 90) { do Gift.drawMedium90(location); }
+            if (rotation = 180) { do Gift.drawMedium180(location); }
+            if (rotation = 270) { do Gift.drawMedium270(location); }
+        }
+
+        if (sizeMode = 1) {
+            if (rotation = 0) { do Gift.drawHuge0(location); }
+            if (rotation = 90) { do Gift.drawHuge90(location); }
+            if (rotation = 180) { do Gift.drawHuge180(location); }
+            if (rotation = 270) { do Gift.drawHuge270(location); }
+        }
+        return;
+    }
+
+    function void drawSmall0(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawSmallRow(memAddress, 0, 0);
+        do Gift.drawSmallRow(memAddress, 32, 3168);
+        do Gift.drawSmallRow(memAddress, 64, 4752);
+        do Gift.drawSmallRow(memAddress, 96, 2336);
+        do Gift.drawSmallRow(memAddress, 128, 1728);
+        do Gift.drawSmallRow(memAddress, 160, 32764);
+        do Gift.drawSmallRow(memAddress, 192, 32764);
+        do Gift.drawSmallRow(memAddress, 224, 32764);
+        do Gift.drawSmallRow(memAddress, 256, 32764);
+        do Gift.drawSmallRow(memAddress, 288, 32764);
+        do Gift.drawSmallRow(memAddress, 320, 32764);
+        do Gift.drawSmallRow(memAddress, 352, 32764);
+        do Gift.drawSmallRow(memAddress, 384, 32764);
+        do Gift.drawSmallRow(memAddress, 416, 32764);
+        do Gift.drawSmallRow(memAddress, 448, 32764);
+        do Gift.drawSmallRow(memAddress, 480, 0);
+        return;
+    }
+
+    function void drawSmall90(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawSmallRow(memAddress, 0, 0);
+        do Gift.drawSmallRow(memAddress, 32, 0);
+        do Gift.drawSmallRow(memAddress, 64, 2046);
+        do Gift.drawSmallRow(memAddress, 96, 2046);
+        do Gift.drawSmallRow(memAddress, 128, 10238);
+        do Gift.drawSmallRow(memAddress, 160, 22526);
+        do Gift.drawSmallRow(memAddress, 192, 20478);
+        do Gift.drawSmallRow(memAddress, 224, 12286);
+        do Gift.drawSmallRow(memAddress, 256, 6142);
+        do Gift.drawSmallRow(memAddress, 288, 12286);
+        do Gift.drawSmallRow(memAddress, 320, 20478);
+        do Gift.drawSmallRow(memAddress, 352, 22526);
+        do Gift.drawSmallRow(memAddress, 384, 10238);
+        do Gift.drawSmallRow(memAddress, 416, 2046);
+        do Gift.drawSmallRow(memAddress, 448, 2046);
+        do Gift.drawSmallRow(memAddress, 480, 0);
+        return;
+    }
+
+    function void drawSmall180(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawSmallRow(memAddress, 0, 0);
+        do Gift.drawSmallRow(memAddress, 32, 16382);
+        do Gift.drawSmallRow(memAddress, 64, 16382);
+        do Gift.drawSmallRow(memAddress, 96, 16382);
+        do Gift.drawSmallRow(memAddress, 128, 16382);
+        do Gift.drawSmallRow(memAddress, 160, 16382);
+        do Gift.drawSmallRow(memAddress, 192, 16382);
+        do Gift.drawSmallRow(memAddress, 224, 16382);
+        do Gift.drawSmallRow(memAddress, 256, 16382);
+        do Gift.drawSmallRow(memAddress, 288, 16382);
+        do Gift.drawSmallRow(memAddress, 320, 16382);
+        do Gift.drawSmallRow(memAddress, 352, 864);
+        do Gift.drawSmallRow(memAddress, 384, 1168);
+        do Gift.drawSmallRow(memAddress, 416, 2376);
+        do Gift.drawSmallRow(memAddress, 448, 1584);
+        do Gift.drawSmallRow(memAddress, 480, 0);
+        return;
+    }
+
+    function void drawSmall270(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawSmallRow(memAddress, 0, 0);
+        do Gift.drawSmallRow(memAddress, 32, 0);
+        do Gift.drawSmallRow(memAddress, 64, 32736);
+        do Gift.drawSmallRow(memAddress, 96, 32736);
+        do Gift.drawSmallRow(memAddress, 128, 32740);
+        do Gift.drawSmallRow(memAddress, 160, 32746);
+        do Gift.drawSmallRow(memAddress, 192, 32754);
+        do Gift.drawSmallRow(memAddress, 224, 32756);
+        do Gift.drawSmallRow(memAddress, 256, 32744);
+        do Gift.drawSmallRow(memAddress, 288, 32756);
+        do Gift.drawSmallRow(memAddress, 320, 32754);
+        do Gift.drawSmallRow(memAddress, 352, 32746);
+        do Gift.drawSmallRow(memAddress, 384, 32740);
+        do Gift.drawSmallRow(memAddress, 416, 32736);
+        do Gift.drawSmallRow(memAddress, 448, 32736);
+        do Gift.drawSmallRow(memAddress, 480, 0);
+        return;
+    }
+
+    function void drawMedium0(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawMediumRow(memAddress, 0, 0, 0);
+        do Gift.drawMediumRow(memAddress, 64, 15360, 240);
+        do Gift.drawMediumRow(memAddress, 128, -15616, 780);
+        do Gift.drawMediumRow(memAddress, 192, 3072, 195);
+        do Gift.drawMediumRow(memAddress, 256, -4096, 60);
+        do Gift.drawMediumRow(memAddress, 320, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 384, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 448, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 512, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 576, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 640, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 704, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 768, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 832, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 896, -16, 16383);
+        do Gift.drawMediumRow(memAddress, 960, 0, 0);
+        return;
+    }
+
+    function void drawMedium90(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawMediumRow(memAddress, 0, 0, 0);
+        do Gift.drawMediumRow(memAddress, 64, 0, 0);
+        do Gift.drawMediumRow(memAddress, 128, -4, 63);
+        do Gift.drawMediumRow(memAddress, 192, -4, 63);
+        do Gift.drawMediumRow(memAddress, 256, -4, 3135);
+        do Gift.drawMediumRow(memAddress, 320, -4, 13119);
+        do Gift.drawMediumRow(memAddress, 384, -4, 12543);
+        do Gift.drawMediumRow(memAddress, 448, -4, 3327);
+        do Gift.drawMediumRow(memAddress, 512, -4, 831);
+        do Gift.drawMediumRow(memAddress, 576, -4, 3327);
+        do Gift.drawMediumRow(memAddress, 640, -4, 12543);
+        do Gift.drawMediumRow(memAddress, 704, -4, 13119);
+        do Gift.drawMediumRow(memAddress, 768, -4, 3135);
+        do Gift.drawMediumRow(memAddress, 832, -4, 63);
+        do Gift.drawMediumRow(memAddress, 896, -4, 63);
+        do Gift.drawMediumRow(memAddress, 960, 0, 0);
+        return;
+    }
+
+    function void drawMedium180(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawMediumRow(memAddress, 0, 0, 0);
+        do Gift.drawMediumRow(memAddress, 64, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 128, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 192, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 256, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 320, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 384, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 448, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 512, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 576, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 640, -4, 4095);
+        do Gift.drawMediumRow(memAddress, 704, 15360, 15);
+        do Gift.drawMediumRow(memAddress, 768, -15616, 48);
+        do Gift.drawMediumRow(memAddress, 832, 12480, 195);
+        do Gift.drawMediumRow(memAddress, 896, 3840, 60);
+        do Gift.drawMediumRow(memAddress, 960, 0, 0);
+        return;
+    }
+
+    function void drawMedium270(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawMediumRow(memAddress, 0, 0, 0);
+        do Gift.drawMediumRow(memAddress, 64, 0, 0);
+        do Gift.drawMediumRow(memAddress, 128, -1024, 16383);
+        do Gift.drawMediumRow(memAddress, 192, -1024, 16383);
+        do Gift.drawMediumRow(memAddress, 256, -976, 16383);
+        do Gift.drawMediumRow(memAddress, 320, -820, 16383);
+        do Gift.drawMediumRow(memAddress, 384, -244, 16383);
+        do Gift.drawMediumRow(memAddress, 448, -208, 16383);
+        do Gift.drawMediumRow(memAddress, 512, -832, 16383);
+        do Gift.drawMediumRow(memAddress, 576, -208, 16383);
+        do Gift.drawMediumRow(memAddress, 640, -244, 16383);
+        do Gift.drawMediumRow(memAddress, 704, -820, 16383);
+        do Gift.drawMediumRow(memAddress, 768, -976, 16383);
+        do Gift.drawMediumRow(memAddress, 832, -1024, 16383);
+        do Gift.drawMediumRow(memAddress, 896, -1024, 16383);
+        do Gift.drawMediumRow(memAddress, 960, 0, 0);
+        return;
+    }
+
+    function void drawHuge0(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawHugeRow(memAddress, 0, 0, 0, 0);
+        do Gift.drawHugeRow(memAddress, 96, -(32767 + 1), -16353, 15);
+        do Gift.drawHugeRow(memAddress, 192, 28672, 14560, 112);
+        do Gift.drawHugeRow(memAddress, 288, -(32767 + 1), 1795, 14);
+        do Gift.drawHugeRow(memAddress, 384, 0, -1796, 1);
+        do Gift.drawHugeRow(memAddress, 480, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 576, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 672, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 768, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 864, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 960, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1056, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1152, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1248, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1344, -64, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1440, 0, 0, 0);
+        return;
+    }
+
+    function void drawHuge90(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawHugeRow(memAddress, 0, 0, 0, 0);
+        do Gift.drawHugeRow(memAddress, 96, 0, 0, 0);
+        do Gift.drawHugeRow(memAddress, 192, -8, -1, 1);
+        do Gift.drawHugeRow(memAddress, 288, -8, -1, 1);
+        do Gift.drawHugeRow(memAddress, 384, -8, -1, 897);
+        do Gift.drawHugeRow(memAddress, 480, -8, -1, 7281);
+        do Gift.drawHugeRow(memAddress, 576, -8, -1, 7183);
+        do Gift.drawHugeRow(memAddress, 672, -8, -1, 911);
+        do Gift.drawHugeRow(memAddress, 768, -8, -1, 113);
+        do Gift.drawHugeRow(memAddress, 864, -8, -1, 911);
+        do Gift.drawHugeRow(memAddress, 960, -8, -1, 7183);
+        do Gift.drawHugeRow(memAddress, 1056, -8, -1, 7281);
+        do Gift.drawHugeRow(memAddress, 1152, -8, -1, 897);
+        do Gift.drawHugeRow(memAddress, 1248, -8, -1, 1);
+        do Gift.drawHugeRow(memAddress, 1344, -8, -1, 1);
+        do Gift.drawHugeRow(memAddress, 1440, 0, 0, 0);
+        return;
+    }
+
+    function void drawHuge180(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawHugeRow(memAddress, 0, 0, 0, 0);
+        do Gift.drawHugeRow(memAddress, 96, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 192, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 288, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 384, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 480, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 576, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 672, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 768, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 864, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 960, -8, -1, 1023);
+        do Gift.drawHugeRow(memAddress, 1056, -(32767 + 1), 16159, 0);
+        do Gift.drawHugeRow(memAddress, 1152, 28672, -16160, 1);
+        do Gift.drawHugeRow(memAddress, 1248, 3584, 1820, 14);
+        do Gift.drawHugeRow(memAddress, 1344, -4096, -2045, 1);
+        do Gift.drawHugeRow(memAddress, 1440, 0, 0, 0);
+        return;
+    }
+
+    function void drawHuge270(int location) {
+        var int memAddress;
+        let memAddress = 16384 + location;
+
+        do Gift.drawHugeRow(memAddress, 0, 0, 0, 0);
+        do Gift.drawHugeRow(memAddress, 96, 0, 0, 0);
+        do Gift.drawHugeRow(memAddress, 192, -(32767 + 1), -1, 8191);
+        do Gift.drawHugeRow(memAddress, 288, -(32767 + 1), -1, 8191);
+        do Gift.drawHugeRow(memAddress, 384, -32320, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 480, -29128, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 576, -4040, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 672, -3648, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 768, -29184, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 864, -3648, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 960, -4040, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1056, -29128, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1152, -32320, -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1248, -(32767 + 1), -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1344, -(32767 + 1), -1, 8191);
+        do Gift.drawHugeRow(memAddress, 1440, 0, 0, 0);
+        return;
+    }
+}

@@ -1,0 +1,225 @@
+class ShapeController {
+
+    function void waitRelease() {
+        while (Keyboard.keyPressed() > 0) {
+        }
+        return;
+    }
+
+    function int horizontalStep(int sizeMode) {
+        if (sizeMode = 1) {
+            return 3;    // huge
+        }
+        if (sizeMode = 0) {
+            return 2;    // medium
+        }
+        return 1;        // small
+    }
+
+    function int verticalStep(int sizeMode) {
+        if (sizeMode = 1) {
+            return 192;  // huge
+        }
+        if (sizeMode = 0) {
+            return 128;  // medium
+        }
+        return 64;       // small
+    }
+
+    function void drawShape(int shapeType, int location, int rotation, int sizeMode) {
+        if (shapeType = 0) {
+            do Gift.drawByState(location, rotation, sizeMode);
+        } else {
+            do Umbrella.drawByState(location, rotation, sizeMode);
+        }
+        return;
+    }
+
+    function void clearShape(int shapeType, int location, int rotation, int sizeMode) {
+        if (shapeType = 0) {
+            do Gift.clearByState(location, rotation, sizeMode);
+        } else {
+            do Umbrella.clearByState(location, rotation, sizeMode);
+        }
+        return;
+    }
+
+    function void showChoiceScreen() {
+        do Screen.clearScreen();
+        do Output.moveCursor(0, 0);
+        do Output.printString("Choose shape: G=Gift, U=Umbrella");
+        do Output.moveCursor(1, 0);
+        do Output.printString("Move: L R U D");
+        do Output.moveCursor(2, 0);
+        do Output.printString("Rotate: 0=orig 1=90 2=180 3=270");
+        do Output.moveCursor(3, 0);
+        do Output.printString("Size: B=Big M=Medium S=Small");
+        do Output.moveCursor(4, 0);
+        do Output.printString("Finish: Q");
+        return;
+    }
+
+    function void printResult(int shapeType, int actionCount) {
+        do Screen.clearScreen();
+        do Output.moveCursor(0, 0);
+        do Output.printString("Chosen shape: ");
+        if (shapeType = 0) {
+            do Output.printString("Gift");
+        } else {
+            do Output.printString("Umbrella");
+        }
+
+        do Output.moveCursor(1, 0);
+        do Output.printString("Actions: ");
+        do Output.printInt(actionCount);
+        return;
+    }
+
+    function void run() {
+        var int selectedShape;
+        var int location;
+        var int actionCount;
+        var int key;
+        var int rotation;
+        var int sizeMode;
+        var int hStep;
+        var int vStep;
+        var boolean chosen;
+        var boolean done;
+
+        let selectedShape = -1;
+        let location = 650;
+        let actionCount = 0;
+        let rotation = 0;
+        let sizeMode = 0;   // מתחילים במקורי החדש = medium
+        let chosen = false;
+        let done = false;
+
+        do ShapeController.showChoiceScreen();
+
+        while (~chosen) {
+            let key = Keyboard.keyPressed();
+
+            if (key = 71) {   // G
+                let selectedShape = 0;
+                let chosen = true;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 85) {   // U
+                let selectedShape = 1;
+                let chosen = true;
+                do ShapeController.waitRelease();
+            }
+        }
+
+        do Screen.clearScreen();
+        do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+
+        while (~done) {
+            let key = Keyboard.keyPressed();
+            let hStep = ShapeController.horizontalStep(sizeMode);
+            let vStep = ShapeController.verticalStep(sizeMode);
+
+            if (key = 76) {   // L
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                if (location > hStep) {
+                    let location = location - hStep;
+                }
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 82) {   // R
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                let location = location + hStep;
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 85) {   // U
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                if (location > vStep) {
+                    let location = location - vStep;
+                }
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 68) {   // D
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                let location = location + vStep;
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 48) {   // 0
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                let rotation = 0;
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 49) {   // 1
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                let rotation = 90;
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 50) {   // 2
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                let rotation = 180;
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 51) {   // 3
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                let rotation = 270;
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 66) {   // B
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                let sizeMode = 1;   // huge
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 77) {   // M
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                let sizeMode = 0;   // medium / original
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 83) {   // S
+                do ShapeController.clearShape(selectedShape, location, rotation, sizeMode);
+                let sizeMode = 2;   // small
+                do ShapeController.drawShape(selectedShape, location, rotation, sizeMode);
+                let actionCount = actionCount + 1;
+                do ShapeController.waitRelease();
+            }
+
+            if (key = 81) {   // Q
+                let done = true;
+                do ShapeController.waitRelease();
+            }
+        }
+
+        do ShapeController.printResult(selectedShape, actionCount);
+        return;
+    }
+}

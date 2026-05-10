@@ -1,0 +1,2058 @@
+function Gift.draw 0
+push argument 0
+push constant 0
+push constant 0
+call Gift.drawByState 3
+pop temp 0
+push constant 0
+return
+function Gift.clear 0
+push argument 0
+push constant 0
+push constant 0
+call Gift.clearByState 3
+pop temp 0
+push constant 0
+return
+function Gift.drawSmallRow 0
+push argument 0
+push argument 1
+add
+push argument 2
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Gift.drawMediumRow 0
+push argument 0
+push argument 1
+add
+push argument 2
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 1
+add
+push argument 3
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 32
+add
+push argument 2
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 33
+add
+push argument 3
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Gift.drawHugeRow 0
+push argument 0
+push argument 1
+add
+push argument 2
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 1
+add
+push argument 3
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 2
+add
+push argument 4
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 32
+add
+push argument 2
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 33
+add
+push argument 3
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 34
+add
+push argument 4
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 64
+add
+push argument 2
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 65
+add
+push argument 3
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 66
+add
+push argument 4
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Gift.clearSmallArea 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 96
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 128
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 160
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 192
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 224
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 256
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 288
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 320
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 352
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 384
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 416
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 448
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push local 0
+push constant 480
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Gift.clearMediumRow 0
+push argument 0
+push argument 1
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 1
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 33
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Gift.clearMediumArea 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 64
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 128
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 192
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 256
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 320
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 384
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 448
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 512
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 576
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 640
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 704
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 768
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 832
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 896
+call Gift.clearMediumRow 2
+pop temp 0
+push local 0
+push constant 960
+call Gift.clearMediumRow 2
+pop temp 0
+push constant 0
+return
+function Gift.clearHugeRow 0
+push argument 0
+push argument 1
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 1
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 2
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 32
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 33
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 34
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 64
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 65
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push argument 0
+push argument 1
+add
+push constant 66
+add
+push constant 0
+call Memory.poke 2
+pop temp 0
+push constant 0
+return
+function Gift.clearHugeArea 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 96
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 192
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 288
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 384
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 480
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 576
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 672
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 768
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 864
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 960
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 1056
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 1152
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 1248
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 1344
+call Gift.clearHugeRow 2
+pop temp 0
+push local 0
+push constant 1440
+call Gift.clearHugeRow 2
+pop temp 0
+push constant 0
+return
+function Gift.clearByState 0
+push argument 2
+push constant 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 0
+call Gift.clearSmallArea 1
+pop temp 0
+label IF_FALSE0
+push argument 2
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push argument 0
+call Gift.clearMediumArea 1
+pop temp 0
+label IF_FALSE1
+push argument 2
+push constant 1
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push argument 0
+call Gift.clearHugeArea 1
+pop temp 0
+label IF_FALSE2
+push constant 0
+return
+function Gift.drawByState 0
+push argument 2
+push constant 2
+eq
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push argument 0
+call Gift.drawSmall0 1
+pop temp 0
+label IF_FALSE1
+push argument 1
+push constant 90
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push argument 0
+call Gift.drawSmall90 1
+pop temp 0
+label IF_FALSE2
+push argument 1
+push constant 180
+eq
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push argument 0
+call Gift.drawSmall180 1
+pop temp 0
+label IF_FALSE3
+push argument 1
+push constant 270
+eq
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push argument 0
+call Gift.drawSmall270 1
+pop temp 0
+label IF_FALSE4
+label IF_FALSE0
+push argument 2
+push constant 0
+eq
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push argument 1
+push constant 0
+eq
+if-goto IF_TRUE6
+goto IF_FALSE6
+label IF_TRUE6
+push argument 0
+call Gift.drawMedium0 1
+pop temp 0
+label IF_FALSE6
+push argument 1
+push constant 90
+eq
+if-goto IF_TRUE7
+goto IF_FALSE7
+label IF_TRUE7
+push argument 0
+call Gift.drawMedium90 1
+pop temp 0
+label IF_FALSE7
+push argument 1
+push constant 180
+eq
+if-goto IF_TRUE8
+goto IF_FALSE8
+label IF_TRUE8
+push argument 0
+call Gift.drawMedium180 1
+pop temp 0
+label IF_FALSE8
+push argument 1
+push constant 270
+eq
+if-goto IF_TRUE9
+goto IF_FALSE9
+label IF_TRUE9
+push argument 0
+call Gift.drawMedium270 1
+pop temp 0
+label IF_FALSE9
+label IF_FALSE5
+push argument 2
+push constant 1
+eq
+if-goto IF_TRUE10
+goto IF_FALSE10
+label IF_TRUE10
+push argument 1
+push constant 0
+eq
+if-goto IF_TRUE11
+goto IF_FALSE11
+label IF_TRUE11
+push argument 0
+call Gift.drawHuge0 1
+pop temp 0
+label IF_FALSE11
+push argument 1
+push constant 90
+eq
+if-goto IF_TRUE12
+goto IF_FALSE12
+label IF_TRUE12
+push argument 0
+call Gift.drawHuge90 1
+pop temp 0
+label IF_FALSE12
+push argument 1
+push constant 180
+eq
+if-goto IF_TRUE13
+goto IF_FALSE13
+label IF_TRUE13
+push argument 0
+call Gift.drawHuge180 1
+pop temp 0
+label IF_FALSE13
+push argument 1
+push constant 270
+eq
+if-goto IF_TRUE14
+goto IF_FALSE14
+label IF_TRUE14
+push argument 0
+call Gift.drawHuge270 1
+pop temp 0
+label IF_FALSE14
+label IF_FALSE10
+push constant 0
+return
+function Gift.drawSmall0 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 32
+push constant 3168
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 64
+push constant 4752
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 96
+push constant 2336
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 128
+push constant 1728
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 160
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 192
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 224
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 256
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 288
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 320
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 352
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 384
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 416
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 448
+push constant 32764
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 480
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push constant 0
+return
+function Gift.drawSmall90 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 32
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 64
+push constant 2046
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 96
+push constant 2046
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 128
+push constant 10238
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 160
+push constant 22526
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 192
+push constant 20478
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 224
+push constant 12286
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 256
+push constant 6142
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 288
+push constant 12286
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 320
+push constant 20478
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 352
+push constant 22526
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 384
+push constant 10238
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 416
+push constant 2046
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 448
+push constant 2046
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 480
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push constant 0
+return
+function Gift.drawSmall180 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 32
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 64
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 96
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 128
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 160
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 192
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 224
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 256
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 288
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 320
+push constant 16382
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 352
+push constant 864
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 384
+push constant 1168
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 416
+push constant 2376
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 448
+push constant 1584
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 480
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push constant 0
+return
+function Gift.drawSmall270 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 32
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 64
+push constant 32736
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 96
+push constant 32736
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 128
+push constant 32740
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 160
+push constant 32746
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 192
+push constant 32754
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 224
+push constant 32756
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 256
+push constant 32744
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 288
+push constant 32756
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 320
+push constant 32754
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 352
+push constant 32746
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 384
+push constant 32740
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 416
+push constant 32736
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 448
+push constant 32736
+call Gift.drawSmallRow 3
+pop temp 0
+push local 0
+push constant 480
+push constant 0
+call Gift.drawSmallRow 3
+pop temp 0
+push constant 0
+return
+function Gift.drawMedium0 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 64
+push constant 15360
+push constant 240
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 128
+push constant 15616
+neg
+push constant 780
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 192
+push constant 3072
+push constant 195
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 256
+push constant 4096
+neg
+push constant 60
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 320
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 384
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 448
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 512
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 576
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 640
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 704
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 768
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 832
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 896
+push constant 16
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 960
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push constant 0
+return
+function Gift.drawMedium90 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 64
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 128
+push constant 4
+neg
+push constant 63
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 192
+push constant 4
+neg
+push constant 63
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 256
+push constant 4
+neg
+push constant 3135
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 320
+push constant 4
+neg
+push constant 13119
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 384
+push constant 4
+neg
+push constant 12543
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 448
+push constant 4
+neg
+push constant 3327
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 512
+push constant 4
+neg
+push constant 831
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 576
+push constant 4
+neg
+push constant 3327
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 640
+push constant 4
+neg
+push constant 12543
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 704
+push constant 4
+neg
+push constant 13119
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 768
+push constant 4
+neg
+push constant 3135
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 832
+push constant 4
+neg
+push constant 63
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 896
+push constant 4
+neg
+push constant 63
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 960
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push constant 0
+return
+function Gift.drawMedium180 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 64
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 128
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 192
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 256
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 320
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 384
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 448
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 512
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 576
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 640
+push constant 4
+neg
+push constant 4095
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 704
+push constant 15360
+push constant 15
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 768
+push constant 15616
+neg
+push constant 48
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 832
+push constant 12480
+push constant 195
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 896
+push constant 3840
+push constant 60
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 960
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push constant 0
+return
+function Gift.drawMedium270 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 64
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 128
+push constant 1024
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 192
+push constant 1024
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 256
+push constant 976
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 320
+push constant 820
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 384
+push constant 244
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 448
+push constant 208
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 512
+push constant 832
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 576
+push constant 208
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 640
+push constant 244
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 704
+push constant 820
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 768
+push constant 976
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 832
+push constant 1024
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 896
+push constant 1024
+neg
+push constant 16383
+call Gift.drawMediumRow 4
+pop temp 0
+push local 0
+push constant 960
+push constant 0
+push constant 0
+call Gift.drawMediumRow 4
+pop temp 0
+push constant 0
+return
+function Gift.drawHuge0 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 96
+push constant 32767
+push constant 1
+add
+neg
+push constant 16353
+neg
+push constant 15
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 192
+push constant 28672
+push constant 14560
+push constant 112
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 288
+push constant 32767
+push constant 1
+add
+neg
+push constant 1795
+push constant 14
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 384
+push constant 0
+push constant 1796
+neg
+push constant 1
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 480
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 576
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 672
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 768
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 864
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 960
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1056
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1152
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1248
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1344
+push constant 64
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1440
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push constant 0
+return
+function Gift.drawHuge90 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 96
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 192
+push constant 8
+neg
+push constant 1
+neg
+push constant 1
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 288
+push constant 8
+neg
+push constant 1
+neg
+push constant 1
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 384
+push constant 8
+neg
+push constant 1
+neg
+push constant 897
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 480
+push constant 8
+neg
+push constant 1
+neg
+push constant 7281
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 576
+push constant 8
+neg
+push constant 1
+neg
+push constant 7183
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 672
+push constant 8
+neg
+push constant 1
+neg
+push constant 911
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 768
+push constant 8
+neg
+push constant 1
+neg
+push constant 113
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 864
+push constant 8
+neg
+push constant 1
+neg
+push constant 911
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 960
+push constant 8
+neg
+push constant 1
+neg
+push constant 7183
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1056
+push constant 8
+neg
+push constant 1
+neg
+push constant 7281
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1152
+push constant 8
+neg
+push constant 1
+neg
+push constant 897
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1248
+push constant 8
+neg
+push constant 1
+neg
+push constant 1
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1344
+push constant 8
+neg
+push constant 1
+neg
+push constant 1
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1440
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push constant 0
+return
+function Gift.drawHuge180 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 96
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 192
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 288
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 384
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 480
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 576
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 672
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 768
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 864
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 960
+push constant 8
+neg
+push constant 1
+neg
+push constant 1023
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1056
+push constant 32767
+push constant 1
+add
+neg
+push constant 16159
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1152
+push constant 28672
+push constant 16160
+neg
+push constant 1
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1248
+push constant 3584
+push constant 1820
+push constant 14
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1344
+push constant 4096
+neg
+push constant 2045
+neg
+push constant 1
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1440
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push constant 0
+return
+function Gift.drawHuge270 1
+push constant 16384
+push argument 0
+add
+pop local 0
+push local 0
+push constant 0
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 96
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 192
+push constant 32767
+push constant 1
+add
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 288
+push constant 32767
+push constant 1
+add
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 384
+push constant 32320
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 480
+push constant 29128
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 576
+push constant 4040
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 672
+push constant 3648
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 768
+push constant 29184
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 864
+push constant 3648
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 960
+push constant 4040
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1056
+push constant 29128
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1152
+push constant 32320
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1248
+push constant 32767
+push constant 1
+add
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1344
+push constant 32767
+push constant 1
+add
+neg
+push constant 1
+neg
+push constant 8191
+call Gift.drawHugeRow 5
+pop temp 0
+push local 0
+push constant 1440
+push constant 0
+push constant 0
+push constant 0
+call Gift.drawHugeRow 5
+pop temp 0
+push constant 0
+return
